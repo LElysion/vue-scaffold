@@ -1,11 +1,11 @@
 
-# about
+## About
 
-该demo为vue-cli 起步，用于演示vuex状态控制及vue-router路由控制
+该demo为vue-cli 起步，用于演示vuex状态控制，vue-router路由控制及与node.js、mongoDB等后台交互
 
 ## vuex
 
-以flux与redux起步， 主要包含store(应用状态), mutations(状态更改), actions(异步状态更改，调用mutations中的提供的方法)
+状态管理， 主要包含store(应用状态), mutations(状态更改), actions(异步状态更改，调用mutations中的提供的方法)
 
 ## vue-router
 
