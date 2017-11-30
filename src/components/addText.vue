@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p><router-link to="/">go to /</router-link></p>
+    <p><router-link to="/">go to count</router-link></p>
     <p>获取store中的数据</p>
     <ul>
       <li v-for="list in textlist" v-bind:key="list.id" >
@@ -16,14 +16,14 @@
 
 <script>
   import store from '@/vuex/store'
-  import { mapState, mapMutations, mapActions } from 'vuex'
+  import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
   export default {
     methods: {
       ...mapMutations([
-        'addText', 'getText' // 注入mutations
+        'add', 'reduce', 'add2', 'addText', 'getText' // 注入mutations
       ]),
       ...mapActions([
-        'getTestAtion' // 注入action
+        'addAction', 'reduceAction', 'getTestAtion' // 注入action
       ]),
       comAddText: function (text) {
         this.addText(text)
@@ -41,13 +41,15 @@
         msg: 'Hello Vuex',
         text: {
           text: ''
-        } // 保存当前页面的文本
+        }, // 保存当前页面的文本
+        count3: store.state.count3 // 获取来自store.state的状态
+        // textlist: store.state.textlist // 获取来自store.state.textlist
       }
     },
     store,
     computed: {
-      ...mapState([ 'textlist' ]) // 注入store的state.count
-      // ...mapGetters([ 'count' ]) // 使用store的getters
+      ...mapState([ 'count', 'count2', 'textlist' ]), // 注入store的state.count
+      ...mapGetters([ 'count' ]) // 使用store的getters
     }
   }
 </script>

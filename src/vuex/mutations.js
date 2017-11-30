@@ -3,6 +3,15 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource) // 使用vue-resource
 Vue.http.options.emulateJSON = true
 export default {
+  add (state, n) {
+    state.count += n
+  },
+  reduce (state) {
+    state.count -= 1
+  },
+  add2 (state) {
+    state.count2 += 1
+  },
   addText (state, text) {
     var data = text
     if (data) {
