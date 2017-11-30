@@ -16,7 +16,7 @@ console.log('connecting database...')
 
 
 global.db = null
-var dbn = 'vueVuex'
+var dbn = 'note'
 
 MongoClient.connect('mongodb://localhost:27017/'+dbn,function(err, instance){
 	if(err!=null){
@@ -39,15 +39,15 @@ MongoClient.connect('mongodb://localhost:27017/'+dbn,function(err, instance){
 	//app.use(cookieParser()) /*????*/
 
 	app.use(session({ //配置session
-		secret: 'vueVuex',
-		name: 'vueVuex',
+		secret: 'note',
+		name: 'note',
 		resave: false,
 		saveUninitialized: false,
 		store: new MongoStore({
 			host: '127.0.0.1',
 			port: '27017',
 			db: 'sessions',
-			url: 'mongodb://localhost:27017/vueVuex'
+			url: 'mongodb://localhost:27017/note'
 		})
 	}))
 

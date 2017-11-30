@@ -1,11 +1,27 @@
+import Vue from 'vue'
+
 export default {
-  addAction (context) { // 传入上下文对象， 即store本身
-    context.commit('add', 10)
+  addTestAction ({commit}, text) {
+    var data = text
+    if (data) {
+      Vue.http.post('/v1/vuex/addtext', data, { emulateJSON: true }).then(function (Response) {
+        console.log(Response)
+        return Response.json()
+      }).then(function (Response) {
+        console.log(Response)
+        commit('getText', Response.data.list)
+      })
+    } else {
+      console.log('falsy data')
+    }
   },
   getTestAtion ({commit}) {
-    commit('getText')
-  },
-  reduceAction ({commit}) { // 直接传入commit对象
-    commit('reduce')
+    Vue.http.post('/v1/vuex/gettextlist').then(function (Response) {
+      console.log(Response)
+      return Response.json()
+    }).then(function (Response) {
+      console.log(Response)
+      commit('getText', Response.data.list)
+    })
   }
 }
